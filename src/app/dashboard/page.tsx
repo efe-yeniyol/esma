@@ -1,24 +1,7 @@
-"use client";
-
 import Image from "next/image";
-import { useEffect } from "react";
+import ElevenLabsWidget from "@/components/ElevenLabsWidget";
 
 export default function Dashboard() {
-  useEffect(() => {
-    // ElevenLabs ConvAI widget'ını yükle
-    const script = document.createElement('script');
-    script.src = 'https://unpkg.com/@elevenlabs/convai-widget-embed';
-    script.async = true;
-    script.type = 'text/javascript';
-    document.head.appendChild(script);
-
-    return () => {
-      // Cleanup
-      if (document.head.contains(script)) {
-        document.head.removeChild(script);
-      }
-    };
-  }, []);
   return (
     <div className="min-h-screen bg-[#0D0D0D] flex flex-col items-center justify-center px-4 py-8">
       {/* Ana Container */}
@@ -47,7 +30,7 @@ export default function Dashboard() {
 
         {/* ElevenLabs ConvAI Widget */}
         <div className="flex justify-center mb-8">
-          <elevenlabs-convai agent-id="agent_1401k5m9t8cmf6zszjyxvg0msvkt"></elevenlabs-convai>
+          <ElevenLabsWidget agentId="agent_1401k5m9t8cmf6zszjyxvg0msvkt" />
         </div>
 
       </div>
