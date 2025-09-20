@@ -1,103 +1,124 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const router = useRouter();
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Geçici kullanıcı kontrolü
+    if (email === "esmaaydın" && password === "esmaaydın1") {
+      // Başarılı giriş
+      router.push("/dashboard");
+    } else {
+      // Hatalı giriş
+      setError("E-posta veya şifre hatalı!");
+    }
+  };
+  return (
+    <div className="min-h-screen bg-[#0D0D0D] flex flex-col items-center justify-center px-4 py-8">
+      {/* Ana Container */}
+      <div className="w-full max-w-md mx-auto">
+        {/* Logo/Resim */}
+        <div className="flex justify-center mb-8">
+          <div className="relative">
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+              src="/assets/1.png"
+              alt="Esma Aydın Logo"
+              width={200}
+              height={200}
+              className="rounded-2xl shadow-2xl shadow-[#3D1C56]/30"
+              priority
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            {/* Glow efekti */}
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-[#3D1C56] to-[#6A1B9A] opacity-20 blur-xl -z-10"></div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        {/* Site Başlığı */}
+        <div className="text-center mb-12">
+          <h1 className="font-poppins font-bold text-2xl md:text-3xl text-white mb-2">
+            Esma Aydın
+          </h1>
+          <p className="font-montserrat text-[#BB86FC] text-lg md:text-xl font-medium">
+            Biyomühendislik Yapay Zeka Aracı
+          </p>
+          <div className="w-16 h-1 bg-gradient-to-r from-[#3D1C56] to-[#6A1B9A] mx-auto mt-4 rounded-full"></div>
+        </div>
+
+        {/* Login Form */}
+        <div className="bg-[#1A1A1D] rounded-2xl p-8 shadow-2xl border border-[#3D1C56]/20">
+          <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Error Message */}
+            {error && (
+              <div className="bg-red-500/10 border border-red-500/20 text-red-400 px-4 py-3 rounded-lg text-sm font-montserrat">
+                {error}
+              </div>
+            )}
+
+            {/* Email Input */}
+            <div>
+              <label htmlFor="email" className="block text-sm font-montserrat font-medium text-[#BB86FC] mb-2">
+                E-posta
+              </label>
+              <input
+                type="text"
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full px-4 py-3 bg-[#0D0D0D] border border-[#3D1C56] rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#6A1B9A] focus:border-transparent transition-all duration-300"
+                placeholder="esmaaydın"
+                required
+              />
+            </div>
+
+            {/* Password Input */}
+            <div>
+              <label htmlFor="password" className="block text-sm font-montserrat font-medium text-[#BB86FC] mb-2">
+                Şifre
+              </label>
+              <input
+                type="password"
+                id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full px-4 py-3 bg-[#0D0D0D] border border-[#3D1C56] rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#6A1B9A] focus:border-transparent transition-all duration-300"
+                placeholder="esmaaydın1"
+                required
+              />
+            </div>
+
+            {/* Login Button */}
+            <button
+              type="submit"
+              className="w-full bg-gradient-to-r from-[#3D1C56] to-[#6A1B9A] text-white font-poppins font-semibold py-3 px-6 rounded-lg hover:from-[#6A1B9A] hover:to-[#3D1C56] transform hover:scale-[1.02] transition-all duration-300 shadow-lg hover:shadow-[#6A1B9A]/30"
+            >
+              Giriş Yap
+            </button>
+          </form>
+
+          {/* Alt Bilgi */}
+          <div className="mt-6 text-center">
+            <p className="text-sm text-gray-400 font-montserrat">
+              Biyomühendislik AI aracına erişim için giriş yapın
+            </p>
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div className="mt-8 text-center">
+          <p className="text-xs text-gray-500 font-montserrat">
+            © 2025 Esma Aydın - Biyomühendislik AI Platformu
+          </p>
+        </div>
+      </div>
     </div>
   );
 }
