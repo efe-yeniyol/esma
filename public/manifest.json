@@ -1,0 +1,27 @@
+{
+  "name": "Esma Aydın - Biyomühendislik AI Aracı",
+  "short_name": "Esma AI",
+  "description": "Biyomühendislik yapay zeka aracı ile protein analizi ve genetik veri işleme",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0D0D0D",
+  "theme_color": "#3D1C56",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/assets/1.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/1.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["science", "education", "productivity"],
+  "lang": "tr",
+  "dir": "ltr"
+}
